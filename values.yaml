@@ -107,8 +107,10 @@ tolerations: []
 affinity: {}
 
 ollama:
+  # -- default model for ollama to pull
   model: "tinyllama"
 
+# -- persistent volume to store ollama models
 persistentVolume:
   enabled: true
   name: ollama-storage-pv
@@ -118,6 +120,7 @@ persistentVolume:
   reclaimPolicy: Retain
   hostPath: /data/pvs/pv0001/
 
+# -- persistent volume claim to store ollama models
 persistentVolumeClaim:
   enabled: true
   name: ollama-storage-pvc
