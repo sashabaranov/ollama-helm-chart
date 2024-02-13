@@ -1,0 +1,16 @@
+{{- if .Values.persistentVolumeClaim.enabled }}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ .Values.persistentVolumeClaim.name }}
+  annotations:
+      storageClassName: {{ .Values.persistentVolumeClaim.storageClassName }}
+spec:
+  accessModes: {{ toYaml .Values.persistentVolumeClaim.accessModes | nindent 4 }}
+  resources:
+    requests:
+      storage: {{ .Values.persistentVolumeClaim.requests.storage }}
+  selector:
+    matchLabels:
+      usage: ollama-storage-pv
+{{- end }}

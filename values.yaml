@@ -105,3 +105,27 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+ollama:
+  model: "tinyllama"
+
+persistentVolume:
+  enabled: true
+  name: ollama-storage-pv
+  capacity: 10Gi
+  accessModes:
+    - ReadWriteMany
+  reclaimPolicy: Retain
+  hostPath: /data/pvs/pv0001/
+
+persistentVolumeClaim:
+  enabled: true
+  name: ollama-storage-pvc
+  storageClassName: standard
+  accessModes:
+    - ReadWriteMany
+  requests:
+    storage: 10Gi
+  selector:
+    matchLabels:
+      usage: ollama-storage-pv
