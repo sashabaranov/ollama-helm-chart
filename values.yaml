@@ -112,23 +112,8 @@ ollama:
 
 # -- persistent volume to store ollama models
 persistentVolume:
-  enabled: true
-  name: ollama-storage-pv
-  capacity: 10Gi
-  accessModes:
-    - ReadWriteMany
-  reclaimPolicy: Retain
-  hostPath: /data/pvs/pv0001/
+  enabled: false
 
 # -- persistent volume claim to store ollama models
 persistentVolumeClaim:
-  enabled: true
-  name: ollama-storage-pvc
-  storageClassName: standard
-  accessModes:
-    - ReadWriteMany
-  requests:
-    storage: 10Gi
-  selector:
-    matchLabels:
-      usage: ollama-storage-pv
+  enabled: false

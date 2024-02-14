@@ -30,8 +30,8 @@ A Helm chart to launch Ollama on Kubernetes
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | ollama.model | string | `"tinyllama"` | default model for ollama to pull |
-| persistentVolume | object | `{"accessModes":["ReadWriteMany"],"capacity":"10Gi","enabled":true,"hostPath":"/data/pvs/pv0001/","name":"ollama-storage-pv","reclaimPolicy":"Retain"}` | persistent volume to store ollama models |
-| persistentVolumeClaim | object | `{"accessModes":["ReadWriteMany"],"enabled":true,"name":"ollama-storage-pvc","requests":{"storage":"10Gi"},"selector":{"matchLabels":{"usage":"ollama-storage-pv"}},"storageClassName":"standard"}` | persistent volume claim to store ollama models |
+| persistentVolume | object | `{"enabled":false}` | persistent volume to store ollama models |
+| persistentVolumeClaim | object | `{"enabled":false}` | persistent volume claim to store ollama models |
 | podAnnotations | object | `{}` |  |
 | podLabels | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
